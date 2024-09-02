@@ -4,5 +4,6 @@ import { ChannelsResolver } from './channels.resolver';
 
 @Module({
   providers: [ChannelsResolver, ChannelsService],
+  exports: [ChannelsService],
 })
 export class ChannelsModule {}

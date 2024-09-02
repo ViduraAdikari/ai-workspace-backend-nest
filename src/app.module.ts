@@ -7,6 +7,8 @@ import configuration from './config/configuration';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { MessagesModule } from './messages/messages.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
     }),
 
     ChannelsModule,
+    MessagesModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
