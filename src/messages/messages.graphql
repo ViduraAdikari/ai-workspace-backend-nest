@@ -1,0 +1,46 @@
+type AvatarIcon {
+  icon: String!
+  color: String!
+  alt: String
+}
+
+type Guest {
+  id: String!
+  nickname: String!
+  avatar: AvatarIcon
+}
+
+type Message {
+  id: String!
+  user: Guest
+  text: String!
+  time: Date!
+}
+
+input AvatarIconInput {
+  icon: String!
+  color: String!
+  alt: String
+}
+
+input MessageGuestInput {
+  id: String!
+  nickname: String!
+  avatar: AvatarIconInput
+}
+
+input CreateMessageInput {
+  channelId: String!
+  id: String!
+  text: String!
+  time: Date!
+  user: MessageGuestInput
+}
+
+type Query {
+  messages(channelId: String!): [Message]
+}
+
+type Mutation {
+  createMessage(createMessageInput: CreateMessageInput!): Message!
+}
