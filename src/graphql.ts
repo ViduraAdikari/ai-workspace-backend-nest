@@ -8,16 +8,25 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export interface AvatarIconInput {
-    icon: string;
-    color: string;
-    alt?: Nullable<string>;
+export enum IconsName {
+    baggage = "baggage",
+    beachPalmSunbed = "beachPalmSunbed",
+    beachSunbed = "beachSunbed",
+    fastFoodBurgerDrink = "fastFoodBurgerDrink",
+    colosseum = "colosseum",
+    londonEye = "londonEye",
+    londonTower = "londonTower",
+    merlion = "merlion",
+    mountain = "mountain",
+    windmill = "windmill",
+    battery = "battery",
+    windTurbine = "windTurbine"
 }
 
 export interface MessageGuestInput {
     id: string;
     nickname: string;
-    avatar?: Nullable<AvatarIconInput>;
+    iconName?: Nullable<IconsName>;
 }
 
 export interface CreateMessageInput {
@@ -40,16 +49,10 @@ export interface IQuery {
     messages(channelId: string): Nullable<Nullable<Message>[]> | Promise<Nullable<Nullable<Message>[]>>;
 }
 
-export interface AvatarIcon {
-    icon: string;
-    color: string;
-    alt?: Nullable<string>;
-}
-
 export interface Guest {
     id: string;
     nickname: string;
-    avatar?: Nullable<AvatarIcon>;
+    iconName?: Nullable<IconsName>;
 }
 
 export interface Message {

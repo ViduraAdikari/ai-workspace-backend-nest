@@ -1,13 +1,22 @@
-type AvatarIcon {
-  icon: String!
-  color: String!
-  alt: String
+enum IconsName {
+  baggage
+  beachPalmSunbed
+  beachSunbed
+  fastFoodBurgerDrink
+  colosseum
+  londonEye
+  londonTower
+  merlion
+  mountain
+  windmill
+  battery
+  windTurbine
 }
 
 type Guest {
   id: String!
   nickname: String!
-  avatar: AvatarIcon
+  iconName: IconsName
 }
 
 type Message {
@@ -17,16 +26,10 @@ type Message {
   time: Date!
 }
 
-input AvatarIconInput {
-  icon: String!
-  color: String!
-  alt: String
-}
-
 input MessageGuestInput {
   id: String!
   nickname: String!
-  avatar: AvatarIconInput
+  iconName: IconsName
 }
 
 input CreateMessageInput {
