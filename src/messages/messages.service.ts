@@ -15,6 +15,7 @@ export class MessagesService {
         id: createMessageInput.id,
         text: createMessageInput.text,
         time: createMessageInput.time,
+        user: createMessageInput.user,
       };
 
       channel.messages = channel.messages
@@ -30,8 +31,6 @@ export class MessagesService {
   findAll(channelId: string): Message[] | undefined {
     try {
       const channel: Channel = this.channelsService.findOne(channelId);
-      console.log('messages', channel.messages);
-
       return channel.messages;
     } catch (e) {
       throw e;
