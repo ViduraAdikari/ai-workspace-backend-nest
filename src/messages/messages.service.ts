@@ -28,12 +28,38 @@ export class MessagesService {
     }
   }
 
-  findAll(channelId: string): Message[] | undefined {
+  /**
+   * find the Messages in the Channel by channelId
+   * @param channelId
+   * @private
+   */
+  private getMessagesInChannel(channelId: string): Message[] | undefined {
     try {
       const channel: Channel = this.channelsService.findOne(channelId);
       return channel.messages;
     } catch (e) {
       throw e;
     }
+  }
+
+  async findAll(channelId: string): Promise<Message[] | undefined> {
+    let timeout: NodeJS.Timeout | undefined = undefined;
+
+    const promise = new Promise<Message[] | undefined>((resolve, reject) => {
+      try {
+        const messages: Message[] | undefined =
+          this.getMessagesInChannel(channelId);
+
+        timeout = setTimeout(() => {
+          resolve(messages);
+        }, 100);
+      } catch (e) {
+        reject(e);
+      }
+    });
+
+    const messages: Message[] | undefined = await promise;
+    clearTimeout(timeout);
+    return messages;
   }
 }
