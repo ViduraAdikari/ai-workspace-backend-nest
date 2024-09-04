@@ -1,0 +1,49 @@
+enum IconsName {
+  baggage
+  beachPalmSunbed
+  beachSunbed
+  fastFoodBurgerDrink
+  colosseum
+  londonEye
+  londonTower
+  merlion
+  mountain
+  windmill
+  battery
+  windTurbine
+}
+
+type Guest {
+  id: String!
+  nickname: String!
+  iconName: IconsName
+}
+
+type Message {
+  id: String!
+  user: Guest
+  text: String!
+  time: Date!
+}
+
+input MessageGuestInput {
+  id: String!
+  nickname: String!
+  iconName: IconsName
+}
+
+input CreateMessageInput {
+  channelId: String!
+  id: String!
+  text: String!
+  time: Date!
+  user: MessageGuestInput
+}
+
+type Query {
+  messages(channelId: String!): [Message]
+}
+
+type Mutation {
+  createMessage(createMessageInput: CreateMessageInput!): Message!
+}
