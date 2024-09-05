@@ -14,7 +14,7 @@ No database is required.\
 Chat data stored in globals.
 If you restart the backend data will be lost.
 
-configuration file can be found in config/configuration.ts
+Shared data configuration file can be found in config/configuration.ts
 
 Setup *env* file.
 - create a file *.development.env* in the project dir and add these values:
